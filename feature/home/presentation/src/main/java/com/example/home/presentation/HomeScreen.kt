@@ -55,7 +55,7 @@ fun HomeScreen(
                     contentPadding = PaddingValues(horizontal = 10.dp)
                 ) {
                     items(state.recentWorks){work->
-                        ResearchTopicCard(
+                        RecentWorksCard(
                             work = work,
                             onClick = {
                                 onClick(work.id)

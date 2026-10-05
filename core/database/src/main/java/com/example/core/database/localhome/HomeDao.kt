@@ -7,13 +7,7 @@ import androidx.room.Query
 
 @Dao
 interface HomeDao {
-    //ResearchTopic
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTopics(topics: List<ResearchTopicEntity>)
-    @Query("DELETE FROM researchtopicentity")
-    suspend fun clearTopics()
-    @Query("SELECT * FROM researchtopicentity")
-    suspend fun getTopics(): List<ResearchTopicEntity>
+
 
     //RecentWorks
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -31,13 +25,7 @@ interface HomeDao {
     @Query("SELECT * FROM citedworksentity")
     suspend fun getCitedWorks(): List<CitedWorksEntity>
 
-    //Institutions
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertInstitutions(institutions: List<InstitutionEntity>)
-    @Query("DELETE FROM institutionentity")
-    suspend fun clearInstitutions()
-    @Query("SELECT * FROM institutionentity")
-    suspend fun getInstitutions(): List<InstitutionEntity>
+
 
 
 

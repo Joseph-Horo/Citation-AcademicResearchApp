@@ -8,18 +8,14 @@ import com.example.core.database.localexplore.ExploreDao
 import com.example.core.database.localexplore.WorkEntity
 import com.example.core.database.localhome.CitedWorksEntity
 import com.example.core.database.localhome.HomeDao
-import com.example.core.database.localhome.InstitutionEntity
 import com.example.core.database.localhome.RecentWorksEntity
-import com.example.core.database.localhome.ResearchTopicEntity
 import com.example.core.database.localwatchlist.WatchListDao
 import com.example.core.database.localwatchlist.WatchListEntity
 
 @Database(
     entities = [
-        ResearchTopicEntity::class,
         RecentWorksEntity::class,
         CitedWorksEntity::class,
-        InstitutionEntity::class,
         WorkEntity::class,
         DetailEntity::class,
         WatchListEntity::class

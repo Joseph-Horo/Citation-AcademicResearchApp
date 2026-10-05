@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.example.home.domain.model.WorkResult
 
 @Composable
-fun ResearchTopicCard(
+fun RecentWorksCard(
     onClick: () -> Unit,
     work: WorkResult
 ) {

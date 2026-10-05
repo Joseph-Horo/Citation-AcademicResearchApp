@@ -16,49 +16,20 @@ class HomeViewModel @Inject constructor(
     var state by mutableStateOf(HomeState())
         private set
     init {
-        getResearchTopics()
         getRecentWorks()
         getMostCitedWorks()
-        getInstitutionsWithMostCitations()
+
     }
     fun onEvent(event: HomeEvent){
         when(event){
             HomeEvent.Refresh -> {
-                getResearchTopics(fetchFromRemote = true)
-                getRecentWorks(fetchFromRemote = true)
+             getRecentWorks(fetchFromRemote = true)
                 getMostCitedWorks(fetchFromRemote = true)
-                getInstitutionsWithMostCitations(fetchFromRemote = true)
             }
         }
     }
 
-    private fun getResearchTopics(fetchFromRemote: Boolean = false){
-        viewModelScope.launch {
-            repository.getTopics(fetchFromRemote)
-                .collect { topics->
-                    when(topics){
-                        is Resource.Error<*> -> Unit
-                        is Resource.Loading<*> -> {
-                            state = state.copy(
-                                isLoading = topics.isLoading
-                            )
-                        }
-                        is Resource.Success<*> ->{
-                            topics.data?.let{topics->
-                                state = state.copy(
-                                    topics = topics
-                                        .take(5),
-                                    isLoading = false
 
-                                )
-
-                            }
-                        }
-                    }
-                }
-        }
-
-    }
     private fun getRecentWorks(fetchFromRemote: Boolean = false){
         viewModelScope.launch {
             repository.getRecentWorks(fetchFromRemote)
@@ -113,31 +84,5 @@ class HomeViewModel @Inject constructor(
         }
 
     }
-    private fun getInstitutionsWithMostCitations(fetchFromRemote: Boolean = false){
-        viewModelScope.launch {
-            repository.getInstitutionsWithMostCitations(fetchFromRemote)
-                .collect { institutions->
-                    when(institutions){
-                        is Resource.Error<*> -> Unit
-                        is Resource.Loading<*> -> {
-                            state = state.copy(
-                                isLoading = institutions.isLoading
-                            )
-                        }
-                        is Resource.Success<*> ->{
-                            institutions.data?.let{institutions->
-                                state = state.copy(
-                                    institutions = institutions
-                                        .take(5),
-                                    isLoading = false
 
-                                )
-
-                            }
-                        }
-                    }
-                }
-        }
-
-    }
 }
