@@ -18,7 +18,6 @@ Technologies used in the project:
 *   Moshi
 *   MVVM
 *   Multi-module Architecture
-*   Dagger Hilt
 *   Retrofit
 *   Coordinators for Navigation
 *   Dagger 2
